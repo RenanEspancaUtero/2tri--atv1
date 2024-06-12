@@ -1,22 +1,64 @@
-function tocaSomPom(idElementoAudio){
-document.querySelector(idElementoAudio).play('');
+var cxPrincipal = document.querySelector(".cx-principal");
+var cxPerguntas = document.querySelector(".cx-perguntas");
+var cxAlternativas = document.querySelector(".cx-alternativas");
+var cxResultado = document.querySelector(".cx-resultado");
+var txResultado = document.querySelector(".tx-resultado");
+var perguntas = [
+    {
+        enunciado: "A IA pode automatizar tarefas repetitivas.",
+        alternativas: [
+            "Vai eliminar tarefas monotonas",
+            "Vai tirar muitos empregos"
+        ]
+    },
+    {
+        enunciado: "A IA pode tomar decisões baseadas em dados.",
+        alternativas: [
+            "Maravilhoso",
+            "Assustador"
+        ]
+    },
+    {
+        enunciado: "A IA pode substituir certos empregos.",
+        alternativas: [
+            "Não vejo problemas",
+            "É o fim dos empregos como conhecemos hoje"
+        ]
+    },
+    {
+        enunciado: "A IA pode ajudar a prever tendências de mercado.",
+        alternativas: [
+           
+            "Incrível",
+            "Sinistro"
+        ]
+    },
+    {
+        enunciado: "A IA pode trabalhar 24/7 sem pausas.",
+        alternativas: [
+            "Surpreendente",
+            "Mão de obra barata"
+        ]
+    }
+];
+
+
+var posiçaoAtual = 0;
+var perguntaAtual;
+
+mostraPergunta();
+
+function mostraPergunta(){
+    perguntaAtual = perguntas[posiçaoAtual];
+    cxPerguntas.textContent = perguntaAtual.enunciado;
+    mostraAlternativas();
 }
 
-const listaDeTeclas = document.querySelectorAll('.tecla');
-
-
-listaDeTeclas[0].onclick = tocaSomPom;
-
-
-for(contador = 0; contador < listaDeTeclas. length;contador++){
-    const instrumento = listaDeTecla [contador].classsList[1];
-
-    const tecla = listaDeTeclas[contador];
-
-    const idAudio = #som_${instrumento};
-    tecla.onclick = function(){
-        tocaSomPom(idAudio);
-    };
-
+function mostraAlternativas(){
+   for (var alternativa of perguntaAtual.alternativas){
+    var botaoAlternativas = document.createElement("button");
+    botaoAlternativas.textContent = alternativa;
+    cxAlternativas.appendChild(botaoAlternativas);
+   }
 }
 
